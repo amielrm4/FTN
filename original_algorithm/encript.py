@@ -4,7 +4,7 @@ import numpy as np
 
 def encriptar(desde, hasta, final):
     # Leemos archivo
-    with open("ENCRIPTING/"+desde, "rb") as f: data = f.read()
+    with open(desde, "rb") as f: data = f.read()
 
     # Extension
     extension_archivo = extension(desde)
@@ -38,7 +38,9 @@ def encriptar(desde, hasta, final):
                     img[i][j][k] = np.random.randint(0, 256)
 
     # Creamos una imagen con nuestra matriz
-    cv.imwrite("ENCRIPTING/"+hasta, img)
+    cv.imwrite(hasta, img)
+    print("Archivo encriptado guardado como \"encripted.png\"")
+
 
 # Devuelve la extension sin el punto, o "" si no la tiene
 def extension(nombre_archivo):
@@ -66,19 +68,14 @@ def contrasenia():
 def archivo():
     while True:
         ruta = input("Archivo a encriptar: ")
-
-        # Usa solo el nombre.extension del archivo
-        # ("D:/ruta/.../ENCRIPTING/archivo.png" --> "archivo.png")
-        s = "/" if "/" in ruta else "\\"
-        split = ruta.split(s)[-1]
         
         try:
-            with open("ENCRIPTING/" + split, "rb"): return split
+            with open(ruta, "rb"): return ruta
         except FileNotFoundError:
             print("Error: El archivo no existe. Por favor, introduce un nombre de archivo válido.")
 
 def main():
-    encriptar(archivo(), "encript.png", contrasenia())
+    encriptar(archivo(), "encripted.png", contrasenia())
     end = input("Presiona Enter para salir...")
 
 if __name__ == "__main__":

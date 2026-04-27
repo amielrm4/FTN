@@ -6,7 +6,7 @@ import cv2 as cv
 # Escribe el archivo desencriptado
 def desencriptar(desde, hasta, contrasenia):
     # Leemos la imagen
-    img = cv.imread("ENCRIPTING/" + desde)
+    img = cv.imread(desde)
     datos = []
     buffer = []
 
@@ -42,7 +42,7 @@ def desencriptar(desde, hasta, contrasenia):
                     elif extension_contador == extension_long+1: # Hemos acabo de leer la extensión
                         extension = bytes(extension_array).decode("latin-1")
                         # Fin de los datos
-                        with open("ENCRIPTING/" + hasta + "." + extension, "wb") as f:
+                        with open(hasta + "." + extension, "wb") as f:
                             f.write(bytearray(datos))
                         print("Contraseña correcta. Archivo desencriptado guardado como \"%s\"." % (hasta + "." + extension))
                         return
@@ -67,16 +67,16 @@ def archivo():
         nombre_archivo_split = nombre_archivo_completo if len(nombre_archivo_completo.split(".")) == 1 else nombre_archivo_completo.split(".")[-2]
 
         try:
-            with open('ENCRIPTING/' + nombre_archivo_completo, "wb"): return nombre_archivo_split
+            with open(nombre_archivo_completo, "wb"): return nombre_archivo_split
         except Exception as e:
             print(f"Error con el nombre del archivo: {e}")
 
 # Comprueba que pueda abrir el archivo a desencriptar y devuelve su nombre con extensión
 def archivo_encript():
     try:
-        with open("ENCRIPTING/encript.png", "rb"): return "encript.png"
+        with open("encripted.png", "rb"): return "encripted.png"
     except FileNotFoundError:
-        end = input("Error: El archivo \"encript.png\" no existe en ENCRIPTING/encript.png.\nEl programa se cerrará.\nPresiona Enter para salir...")
+        end = input("Error: El archivo \"encripted.png\" no existe.\nEl programa se cerrará.\nPresiona Enter para salir...")
         exit(1)
 
 def main():
