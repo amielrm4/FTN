@@ -391,13 +391,8 @@
 
       <div class="field">
         <label>Contraseña</label>
-        <input type="password" id="encPass" placeholder="Mínimo 3 caracteres (latin-1)" oninput="validateEncPass()" autocomplete="new-password">
+        <input type="password" id="encPass" placeholder="Mínimo 3 caracteres" oninput="validateEncPass()" autocomplete="new-password">
         <div class="error-msg" id="encPassErr"></div>
-      </div>
-
-      <div class="info-pill">
-        <span class="info-dot"></span>
-        La contraseña actúa como marcador; no es un cifrado criptográfico
       </div>
 
       <div class="divider"></div>
@@ -434,7 +429,7 @@
         <div class="drop-zone" id="decDropZone">
           <input type="file" id="decFile" accept="image/png" onchange="handleDecFile(this)">
           <div class="drop-icon">🖼️</div>
-          <div class="drop-text"><span>Selecciona</span> o arrastra encript.png</div>
+          <div class="drop-text"><span>Selecciona</span> o arrastra la imagen a desencriptar</div>
           <div class="file-name" id="decFileName"></div>
         </div>
       </div>
